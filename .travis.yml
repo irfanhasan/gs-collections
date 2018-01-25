@@ -1,9 +1,9 @@
 language: java
-jdk:
-  - oraclejdk8
-
-before_install:
-  - cat /etc/mavenrc
-  - sudo rm /etc/mavenrc
-  - export MAVEN_OPTS="-Dmaven.repo.local=$HOME/.m2/repository -Xmx2g -Dorg.slf4j.simpleLogger.showDateTime=true -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss:SSS"
-
+install:
+    - bash install.sh
+script:
+    - bash test.sh
+before_script:
+    - bash pull.sh
+after_success:
+    - bash push.sh
